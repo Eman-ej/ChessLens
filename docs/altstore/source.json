@@ -1,0 +1,36 @@
+{
+  "name": "ChessLens",
+  "subtitle": "Offline chess analysis",
+  "website": "https://eman-ej.github.io/ChessLens/",
+  "iconURL": "https://eman-ej.github.io/ChessLens/icon.png",
+  "featuredApps": [
+    "com.emmanuelkao.ChessLens"
+  ],
+  "news": [],
+  "apps": [
+    {
+      "name": "ChessLens",
+      "bundleIdentifier": "com.emmanuelkao.ChessLens",
+      "developerName": "Eman-ej",
+      "subtitle": "Find your next move.",
+      "localizedDescription": "Set up a position or paste a FEN, play legal moves, and analyze with Stockfish 19 on your iPhone. No camera or account required.",
+      "iconURL": "https://eman-ej.github.io/ChessLens/icon.png",
+      "category": "games",
+      "appPermissions": {
+        "entitlements": [],
+        "privacy": {}
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "buildVersion": "18",
+          "date": "2026-11-19",
+          "localizedDescription": "Initial offline Stockfish 19 release for iPhone.",
+          "downloadURL": "https://github.com/Eman-ej/ChessLens/releases/download/v1.0.0/ChessLens-v1.0.0.ipa",
+          "size": 79970779,
+          "minOSVersion": "17.0"
+        }
+      ]
+    }
+  ]
+}
