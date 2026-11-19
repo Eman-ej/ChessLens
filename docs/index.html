@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ChessLens is an offline chess position analyzer for iPhone, powered by Stockfish 19.">
+  <title>ChessLens — Offline chess analysis for iPhone</title>
+  <link rel="icon" href="icon.png">
+  <style>
+    :root{color-scheme:dark;--bg:#0e1b18;--panel:#182823;--ink:#f3f5ed;--muted:#bfcec4;--lime:#c7eb8a}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.65 system-ui,sans-serif}
+    main{max-width:68rem;margin:auto;padding:clamp(1.25rem,5vw,4.5rem) clamp(1.25rem,5vw,3rem)}
+    header{display:flex;align-items:center;gap:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    header img{border-radius:.6rem}h1,h2{line-height:1.08;margin:0;color:var(--ink)}
+    h1{font:600 clamp(3.2rem,8.5vw,7rem)/.99 Georgia,serif;letter-spacing:-.06em;margin:.35em 0 .23em}
+    h2{font:600 clamp(1.9rem,4vw,2.8rem)/1.05 Georgia,serif}
+    p{max-width:56ch;color:var(--muted)}a{color:var(--lime);text-underline-offset:.22em}
+    .eyebrow{color:var(--lime);font-size:.8rem;letter-spacing:.13em;text-transform:uppercase}
+    .hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);align-items:center;gap:clamp(1.5rem,5vw,4rem);margin:3rem 0}
+    .hero figure{margin:0;text-align:center}.hero figure img{display:block;max-width:min(100%,19rem);height:auto;margin:auto;border:1px solid #53705d;border-radius:1.25rem}
+    figcaption,footer{font-size:.8rem;color:var(--muted);margin-top:.75rem}
+    .actions{display:flex;align-items:center;gap:1.15rem;flex-wrap:wrap;margin:1.4rem 0}
+    .button{display:inline-block;padding:.7rem 1rem;border-radius:.55rem;background:var(--lime);color:var(--bg);font-weight:700;text-decoration:none}
+    section{border-top:1px solid #395649;padding:1.8rem 0}ol{padding-inline-start:1.4rem;color:var(--muted)}
+    @media(max-width:680px){.hero{grid-template-columns:minmax(0,1fr);align-items:start}.hero figure{text-align:left}.hero figure img{margin:0}}
+  </style>
+</head>
+<body>
+  <main>
+    <header><img src="icon.png" alt="" width="42" height="42"> ChessLens</header>
+    <div class="hero">
+      <div>
+        <p class="eyebrow">iPhone &middot; Offline chess analysis</p>
+        <h1>Find your<br>next move.</h1>
+        <p>Set up a position, play out a line, or paste a FEN. Stockfish 19 evaluates the board and suggests moves right on your iPhone.</p>
+        <div class="actions"><a class="button" href="https://github.com/Eman-ej/ChessLens/releases">Check release availability</a><a href="#install">Installation guide</a></div>
+        <p>iOS 17 or later &middot; AltStore Classic &middot; No camera scanning in this edition</p>
+      </div>
+      <figure><img src="simulator.png" alt="ChessLens on iPhone showing a chessboard and the position editor" width="414" height="900"><figcaption>Actual ChessLens simulator capture.</figcaption></figure>
+    </div>
+    <section id="install">
+      <h2>Install with AltStore Classic</h2>
+      <ol>
+        <li>Set up AltServer and AltStore Classic on a <a href="https://faq.altstore.io/altstore-classic/how-to-install-altstore-macos">Mac</a> or <a href="https://faq.altstore.io/altstore-classic/how-to-install-altstore-windows">Windows PC</a>.</li>
+        <li>Once the IPA is published, save it to Files. In AltStore, open <strong>My Apps → +</strong> and select the IPA while AltServer is reachable.</li>
+        <li>Refresh from AltStore before the seven-day free signature expires. A GitHub download alone does not install the app.</li>
+      </ol>
+      <p><a href="https://github.com/Eman-ej/ChessLens/blob/main/docs/INSTALLATION.md">Installation and troubleshooting</a></p>
+    </section>
+    <section><h2>Your positions stay on your phone.</h2><p>ChessLens has no account, analytics, remote analysis, or camera access. <a href="https://github.com/Eman-ej/ChessLens/blob/main/docs/PRIVACY.md">Read the privacy notes.</a></p></section>
+    <footer>ChessLens is open source under GPL-3.0-or-later. <a href="https://github.com/Eman-ej/ChessLens">Source and build instructions</a></footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,5 @@
+#include "Distribution.xcconfig"
+CURRENT_PROJECT_VERSION = 18
+INFOPLIST_FILE = ChessLens/Stockfish-Info.plist
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = CHESSLENS_STOCKFISH_RELEASE
+EXCLUDED_SOURCE_FILE_NAMES = BoardCornersView.swift CameraPicker.swift DeepSeekClient.swift FullBoardScanner.swift OfflineBoardScanner.swift OfflineModelCard.swift OfflineModelCatalog.swift OfflineModelStore.swift OfflineSquareFeatures.swift RealBoardScanner.swift SettingsView.swift SampleBoard.png SampleRealBoard.jpg ChessLensColabT4.mlmodel ChessLensRealBoardCandidate.mlmodel FenformerBoard.mlpackage FenformerFraming.mlpackage ColabModelNotices.txt FenformerNotices.txt
