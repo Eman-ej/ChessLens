@@ -25,3 +25,9 @@ training/**/runs/
 test-assets/
 reports/
 drafts/
+
+# Locally supplied resources for private scanner builds
+ios/ChessLens/FenformerBoard.mlpackage
+ios/ChessLens/FenformerFraming.mlpackage
+ios/ChessLens/ChessLensColabT4.mlmodel
+ios/ChessLens/SampleRealBoard.jpg

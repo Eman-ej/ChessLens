@@ -16,6 +16,67 @@ final class AppModel: ObservableObject {
     private var analysisGeneration = 0
 
 
+    @Published private(set) var photo: UIImage?
+    private(set) var sampleCorners: [CGPoint]?
+
+    func selectPhoto(_ image: UIImage) {
+        photo = image
+        sampleCorners = nil
+    }
+
+    func selectSamplePhoto() {
+        guard let url = Bundle.main.url(forResource: "SampleRealBoard", withExtension: "jpg"),
+              let image = UIImage(contentsOfFile: url.path) else {
+            error = "The sample photo could not be opened."
+            return
+        }
+        selectPhoto(image)
+        // ChessReD annotations in a8, h8, h1, a1 order, normalized to the sample.
+        sampleCorners = [(902.5667, 920.55), (156.2167, 790.0125), (410.9417, 349.2583), (1004.55, 423.3)].map {
+            CGPoint(x: $0.0 / 1280, y: $0.1 / 1280)
+        }
+    }
+
+    func scan(corners: [CGPoint]? = nil) async {
+        guard busy == nil, let photo else { return }
+        busy = "Reading the board on this iPhone…"
+        defer { busy = nil }
+        do {
+            // Draw upright so the recognizer and the corner picker see the same orientation.
+            let scale = min(photo.scale, 4096 / max(photo.size.width, photo.size.height))
+            let size = CGSize(width: photo.size.width * scale, height: photo.size.height * scale)
+            let format = UIGraphicsImageRendererFormat()
+            format.scale = 1
+            let upright = UIGraphicsImageRenderer(size: size, format: format).image { _ in
+                photo.draw(in: CGRect(origin: .zero, size: size))
+            }
+            guard let image = upright.cgImage else { throw ServiceError(message: "This photo could not be opened.") }
+
+            let result: Recognition
+            if let corners {
+                result = try await Task.detached(priority: .userInitiated) {
+                    guard let url = Bundle.main.url(forResource: "ChessLensColabT4", withExtension: "mlmodelc") else {
+                        throw ServiceError(message: "The guided scanner is missing from this build.")
+                    }
+                    let model = try RealBoardScanner.loadModel(at: url)
+                    return try await RealBoardScanner.recognizeWithFallback(image: image, corners: corners, model: model) {
+                        try await FullBoardScanner.shared.recognize(image: $0)
+                    }
+                }.value
+            } else {
+                result = try await FullBoardScanner.shared.recognize(image: image)
+            }
+            position = try ChessPosition(fen: result.placement + " w - - 0 1")
+            warnings = result.warnings
+            uncertainSquares = result.uncertainSquares
+            selectedSquare = nil
+            whiteAtBottom = true
+            invalidateAnalysis()
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+
     func invalidateAnalysis() {
         analysis = nil
     }

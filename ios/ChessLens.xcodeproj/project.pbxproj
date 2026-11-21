@@ -31,6 +31,9 @@
 				<string>BDBF2A3594A138E138F71F88</string>
 				<string>0C5E0A0D738E2AA92E617DCC</string>
 				<string>8113DE38527446368D4F5FBC</string>
+				<string>345EF5EBFAF637012AFB6FC5</string>
+				<string>A83DAFE96B43441492495B08</string>
+				<string>A83DAFE96B43441492495C06</string>
 			</array>
 			<key>isa</key>
 			<string>PBXResourcesBuildPhase</string>
@@ -331,6 +334,16 @@
 				<string>ACB431558BF793290D28602F</string>
 				<string>9727B9EED8ACD2EE46E136A0</string>
 				<string>84BAB6FC0740D22F20C2CE79</string>
+				<string>AC6EB3D0EE4C8A7C411F5ABB</string>
+				<string>DE00FBCA544761FBE6D28055</string>
+				<string>A83DAFE96B43441492495B01</string>
+				<string>A83DAFE96B43441492495B03</string>
+				<string>A83DAFE96B43441492495B07</string>
+				<string>A83DAFE96B43441492495C01</string>
+				<string>A83DAFE96B43441492495C03</string>
+				<string>A83DAFE96B43441492495C07</string>
+				<string>A83DAFE96B43441492495C05</string>
+				<string>1063E6D25F0CDF235DAEECAD</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -436,7 +449,7 @@
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>CURRENT_PROJECT_VERSION</key>
-				<string>18</string>
+				<string>19</string>
 				<key>DEBUG_INFORMATION_FORMAT</key>
 				<string>dwarf-with-dsym</string>
 				<key>ENABLE_PREVIEWS</key>
@@ -454,14 +467,14 @@
 				<key>GENERATE_INFOPLIST_FILE</key>
 				<string>NO</string>
 				<key>INFOPLIST_FILE</key>
-				<string>ChessLens/Stockfish-Info.plist</string>
+				<string>ChessLens/Distribution-Info.plist</string>
 				<key>LD_RUNPATH_SEARCH_PATHS</key>
 				<array>
 					<string>$(inherited)</string>
 					<string>@executable_path/Frameworks</string>
 				</array>
 				<key>MARKETING_VERSION</key>
-				<string>1.0.0</string>
+				<string>1.1.0</string>
 				<key>OTHER_CPLUSPLUSFLAGS[arch=arm64]</key>
 				<array>
 					<string>$(inherited)</string>
@@ -543,7 +556,7 @@
 				<key>CODE_SIGN_STYLE</key>
 				<string>Automatic</string>
 				<key>CURRENT_PROJECT_VERSION</key>
-				<string>18</string>
+				<string>19</string>
 				<key>DEBUG_INFORMATION_FORMAT</key>
 				<string>dwarf</string>
 				<key>ENABLE_PREVIEWS</key>
@@ -561,14 +574,14 @@
 				<key>GENERATE_INFOPLIST_FILE</key>
 				<string>NO</string>
 				<key>INFOPLIST_FILE</key>
-				<string>ChessLens/Stockfish-Info.plist</string>
+				<string>ChessLens/Distribution-Info.plist</string>
 				<key>LD_RUNPATH_SEARCH_PATHS</key>
 				<array>
 					<string>$(inherited)</string>
 					<string>@executable_path/Frameworks</string>
 				</array>
 				<key>MARKETING_VERSION</key>
-				<string>1.0.0</string>
+				<string>1.1.0</string>
 				<key>OTHER_CPLUSPLUSFLAGS[arch=arm64]</key>
 				<array>
 					<string>$(inherited)</string>
@@ -1016,6 +1029,13 @@
 				<string>D99203B81A1932E94DE93829</string>
 				<string>B4A081ADAD6BFF6324356F4F</string>
 				<string>34CE6EBA263748D371912949</string>
+				<string>0D712A1908D730927A4CF0C7</string>
+				<string>A83DAFE96B43441492495B02</string>
+				<string>A83DAFE96B43441492495B04</string>
+				<string>A83DAFE96B43441492495C02</string>
+				<string>A83DAFE96B43441492495C04</string>
+				<string>A83DAFE96B43441492495C08</string>
+				<string>174C7AE3DE7F2A328AE0D700</string>
 			</array>
 			<key>isa</key>
 			<string>PBXSourcesBuildPhase</string>
@@ -1224,6 +1244,186 @@
 			<string>Products</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A83DAFE96B43441492495B08</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A83DAFE96B43441492495B07</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DE00FBCA544761FBE6D28055</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>ColabModelNotices.txt</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A83DAFE96B43441492495C08</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A83DAFE96B43441492495C07</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A83DAFE96B43441492495C04</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A83DAFE96B43441492495C03</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A83DAFE96B43441492495B02</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A83DAFE96B43441492495B01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A83DAFE96B43441492495C06</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A83DAFE96B43441492495C05</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A83DAFE96B43441492495B03</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>BoardCornersView.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A83DAFE96B43441492495B07</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>path</key>
+			<string>SampleRealBoard.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>345EF5EBFAF637012AFB6FC5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>DE00FBCA544761FBE6D28055</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A83DAFE96B43441492495C03</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.mlpackage</string>
+			<key>path</key>
+			<string>FenformerBoard.mlpackage</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A83DAFE96B43441492495B04</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A83DAFE96B43441492495B03</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>174C7AE3DE7F2A328AE0D700</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1063E6D25F0CDF235DAEECAD</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A83DAFE96B43441492495C01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>FullBoardScanner.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A83DAFE96B43441492495B01</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>RealBoardScanner.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A83DAFE96B43441492495C05</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>FenformerNotices.txt</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1063E6D25F0CDF235DAEECAD</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.swift</string>
+			<key>path</key>
+			<string>CameraPicker.swift</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A83DAFE96B43441492495C02</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A83DAFE96B43441492495C01</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A83DAFE96B43441492495C07</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.mlpackage</string>
+			<key>path</key>
+			<string>FenformerFraming.mlpackage</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AC6EB3D0EE4C8A7C411F5ABB</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.mlmodel</string>
+			<key>path</key>
+			<string>ChessLensColabT4.mlmodel</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0D712A1908D730927A4CF0C7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AC6EB3D0EE4C8A7C411F5ABB</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 	</dict>
 	<key>rootObject</key>

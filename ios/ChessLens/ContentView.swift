@@ -1,9 +1,14 @@
 import SwiftUI
+import PhotosUI
 
 struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var model = AppModel()
     @State private var showSettings = false
+    @State private var selectedPhoto: PhotosPickerItem?
+    @State private var importingPhoto = false
+    @State private var showCamera = false
+    @State private var showCorners = false
     @State private var fenInput = ""
 
     var body: some View {
@@ -11,6 +16,7 @@ struct ContentView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 header
+                scanCard
                 if let busy = model.busy {
                     HStack(spacing: 12) { ProgressView(); Text(busy).font(.subheadline) }
                         .frame(maxWidth: .infinity, alignment: .leading).lensCard()
@@ -33,6 +39,30 @@ struct ContentView: View {
         .background(Theme.background)
         .tint(Theme.accent)
         .sheet(isPresented: $showSettings) { about }
+        .sheet(isPresented: $showCamera) { CameraPicker { model.selectPhoto($0) } }
+        .sheet(isPresented: $showCorners) {
+            if let photo = model.photo {
+                BoardCornersView(photo: photo) { corners in
+                    Task { await model.scan(corners: corners) }
+                }
+            }
+        }
+        .task(id: selectedPhoto) {
+            guard let selectedPhoto else { return }
+            importingPhoto = true
+            defer { importingPhoto = false }
+            do {
+                guard let data = try await selectedPhoto.loadTransferable(type: Data.self),
+                      let photo = UIImage(data: data) else {
+                    throw ServiceError(message: "Choose another photo. This image could not be opened.")
+                }
+                try Task.checkCancellation()
+                model.selectPhoto(photo)
+            } catch {
+                if !Task.isCancelled { model.error = error.localizedDescription }
+            }
+            if !Task.isCancelled { self.selectedPhoto = nil }
+        }
         .alert("Something needs attention", isPresented: Binding(get: { model.error != nil }, set: { if !$0 { model.error = nil } })) {
             Button("OK", role: .cancel) { model.error = nil }
         } message: { Text(model.error ?? "") }
@@ -89,6 +119,9 @@ struct ContentView: View {
                 Section("Offline analysis") {
                     Text("Set up a board or paste a FEN. Stockfish 19 analyzes positions on this iPhone without an account or internet connection.")
                 }
+                Section("Physical-board scanning") {
+                    Text("Photos are processed on this iPhone. Fenformer scans automatically. Marking the corners uses the Colab T4 model trained on ChessReD, with automatic fallback when needed.")
+                }
                 Section("Open source") {
                     Link("ChessLens source and license", destination: URL(string: "https://github.com/Eman-ej/ChessLens")!)
                     Link("Stockfish upstream source", destination: URL(string: "https://github.com/official-stockfish/Stockfish")!)
@@ -103,10 +136,48 @@ struct ContentView: View {
         }.tint(Theme.accent)
     }
 
+    private var scanCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            step("01", "Scan a physical board")
+            HStack {
+                PhotosPicker(selection: $selectedPhoto, matching: .images) {
+                    Label("Choose photo", systemImage: "photo")
+                }
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    Button { showCamera = true } label: {
+                        Label("Camera", systemImage: "camera")
+                    }
+                }
+            }
+            .buttonStyle(.bordered)
+            Button("Try a sample photo") { model.selectSamplePhoto() }
+                .font(.subheadline)
+            if let photo = model.photo {
+                Image(uiImage: photo).resizable().scaledToFit().frame(maxHeight: 180)
+                    .accessibilityLabel("Selected chessboard photo")
+                Button {
+                    Task { await model.scan() }
+                } label: {
+                    Label("Scan board", systemImage: "viewfinder")
+                }.buttonStyle(.borderedProminent)
+                Button("Scan with marked corners") {
+                    if let corners = model.sampleCorners {
+                        Task { await model.scan(corners: corners) }
+                    } else {
+                        showCorners = true
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .lensCard()
+        .disabled(model.busy != nil || importingPhoto)
+    }
+
     private var positionCard: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
-                step("01", "Set up a position")
+                step("02", "Review or set up a position")
                 Spacer(minLength: 4)
                 Button { model.whiteAtBottom.toggle() } label: { Image(systemName: "arrow.up.arrow.down") }
                     .accessibilityLabel("Flip board display")
@@ -215,7 +286,7 @@ struct ContentView: View {
 
     private func analysisCard(_ analysis: Analysis, showBoard: @escaping () -> Void) -> some View {
         VStack(alignment: .leading, spacing: 16) {
-            step("02", "The engine's pick")
+            step("03", "The engine's pick")
             if let san = analysis.bestMoveSAN {
                 HStack(alignment: .firstTextBaseline) {
                     Text(san).font(.system(size: 46, weight: .semibold, design: .serif)).foregroundStyle(Theme.accent)

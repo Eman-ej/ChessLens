@@ -1,5 +1,11 @@
 import Foundation
 
+struct Recognition {
+    let placement: String
+    let uncertainSquares: [String]
+    let warnings: [String]
+}
+
 struct Variation: Decodable, Identifiable {
     var id: String { move }
     let move: String
