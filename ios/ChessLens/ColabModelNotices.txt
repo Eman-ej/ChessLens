@@ -1,0 +1,25 @@
+ChessLens custom physical-piece recognition models
+
+Training data: Athanasios Masouris and Jan van Gemert, ChessReD / ChessReD2K.
+https://doi.org/10.4121/99b5c721-280b-450b-b058-b2900b69a90f.v2
+Dataset and these derived research models: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+Retain attribution, identify modifications, use noncommercially, and license shared adaptations under the same license. No warranty is provided.
+
+Initialization: torchvision MobileNetV3 Small ImageNet weights. PyTorch/torchvision contributors, BSD-style license.
+https://github.com/pytorch/vision
+https://github.com/pytorch/vision/blob/main/LICENSE
+
+Modifications: ChessLens fine-tuned the 13-class piece/empty-square classifier on ChessReD smartphone photographs and converted the checkpoints to Core ML. Four semantic board corners and crops with upright headroom are required. These models do not locate the board automatically.
+
+ChessLensColabT4.mlmodel:
+Original Colab Tesla T4 run, best epoch 32, 336 training photos.
+Checkpoint SHA-256: ca0cf5a7b9e733c297c330de484b51524c9f5353db9d7376e1ffb2ab312ce39f
+
+ChessLensRealBoardCandidate.mlmodel:
+Preserved 18 November Mac MPS continuation, best epoch 7, 1442 training photos.
+Checkpoint SHA-256: d3d47ec2adb5d3ad53e6b6693bfe2c4a1c3da90077de356a6917b8a17e1e713c
+This continuation failed its saved validation gate because confidently wrong predictions increased. It remains experimental.
+
+Both models can make confidently incorrect predictions. Review every square. A photo does not determine whose turn it is, castling rights, or en passant.
